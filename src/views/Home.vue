@@ -1,8 +1,32 @@
 <template>
-  <div class="container">
-    <h1 v-if="isAuth">FACEBOOK CHILD</h1>
-    <Article />
-    <!-- <div class="homePage" v-if="isAuth">
+<div class="container">
+    <div class="home-page">
+    <div class="banner">
+      <div class="container">
+        <h1 v-if="isAuth">SOCIAL NETWORK</h1>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9">
+            <div class="feed-toggle">
+              <HomeArticleNavs />
+            </div>
+            <!-- ĐIều khiển nav -->
+            <router-view></router-view>
+          </div>
+          <div class="col-md-3">
+            <the-tags />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- <Articles /> -->
+  <!-- <Article /> -->
+  <!-- <div class="homePage" v-if="isAuth">
       <div class="feed-toggle">
         <ul class="nav nav-pills outline-active">
           <li class="nav-item">
@@ -37,55 +61,60 @@
         :article="article"
       />
     </div> -->
-  </div>
+  <!-- </div> -->
 </template>
 
 <script>
-import Article from './Article.vue';
+import HomeArticleNav from "../components/HomeArticleNav.vue";
+import TheTags from '../components/TheTags.vue';
+import Article from "./Article.vue";
+
+
+// import Article from './Article.vue';
 // import ArticlePreview from "../components/ArticlePreview.vue";
 export default {
-  components: { Article: Article },
+  components: { HomeArticleNavs: HomeArticleNav, Articles: Article, TheTags},
   // components: { ArticlePreview },
   name: "Home",
   data() {
     return {
-      articles: [
-        {
-          slug: "",
-          title: "",
-          description: "",
-          body: "",
-          tagList: ["", ""],
-          createdAt: "",
-          updatedAt: "",
-          favorited: false,
-          favoritesCount: 0,
-          author: {
-            username: "",
-            bio: "",
-            image: "",
-            following: false,
-          },
-        },
-        {
-          slug: "",
-          title: "",
-          description: "",
-          body: "",
-          tagList: ["", ""],
-          createdAt: "",
-          updatedAt: "",
-          favorited: false,
-          favoritesCount: 0,
-          author: {
-            username: "",
-            bio: "",
-            image: "",
-            following: false,
-          },
-        },
-      ],
-      activeFeed: "global",
+      // articles: [
+      //   {
+      //     slug: "",
+      //     title: "",
+      //     description: "",
+      //     body: "",
+      //     tagList: ["", ""],
+      //     createdAt: "",
+      //     updatedAt: "",
+      //     favorited: false,
+      //     favoritesCount: 0,
+      //     author: {
+      //       username: "",
+      //       bio: "",
+      //       image: "",
+      //       following: false,
+      //     },
+      //   },
+      //   {
+      //     slug: "",
+      //     title: "",
+      //     description: "",
+      //     body: "",
+      //     tagList: ["", ""],
+      //     createdAt: "",
+      //     updatedAt: "",
+      //     favorited: false,
+      //     favoritesCount: 0,
+      //     author: {
+      //       username: "",
+      //       bio: "",
+      //       image: "",
+      //       following: false,
+      //     },
+      //   },
+      // ],
+      // activeFeed: "global",
     };
   },
   methods: {
@@ -111,23 +140,26 @@ export default {
     //   return this.$store.getters["users/username"];
     // },
     isAuth() {
-      return this.$store.getters["user","isAuthenticated"];
+      return this.$store.getters[("user", "isAuthenticated")];
     },
   },
 };
 </script>
 
 <style>
+.home-page{
+  background-color: #e0f2f1;
+}
 .homePage {
   color: black;
 }
-h1{
+h1 {
   text-align: center;
 }
 .homePage-title {
   text-align: center;
 }
-.container{
+.container {
   color: black;
 }
 </style>

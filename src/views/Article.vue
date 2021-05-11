@@ -18,7 +18,7 @@
           <i class="fas fa-heart">{{ getArticle.favoritesCount }}</i>
         </button>
         <router-link :to="``" class="preview-link">
-          <h1>{{getArticle.title}}</h1>
+          <h3>{{getArticle.title}}</h3>
           <p>{{getArticle.description}}</p>
           <span>Read more...</span>
           <hr />
@@ -40,7 +40,6 @@ export default {
   },
   mounted() {
     this.$store.dispatch("getArticle");
-    debugger;
   },
   computed: {
     getArticle() {
@@ -76,5 +75,8 @@ export default {
 }
 .user-flex-group {
   display: grid;
+}
+h5{
+  color: black;
 }
 </style>

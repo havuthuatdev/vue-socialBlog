@@ -14,4 +14,5 @@ export const END_LOAD_ARTICLE = (state, article) => {
 export const SET_ARTICLE = (state, articles) => {
     state.article = articles;
     console.log(state.article);
+
 }

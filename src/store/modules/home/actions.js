@@ -25,19 +25,23 @@
 //     commit("setArticles", response.data);
 // }
 // import Article from '../../../apis/Article'
-import ApiService, { Article } from '../../../apis'
+import ApiService, { HomeArticles } from '../../../apis'
 
-export const fetchArticle = ({ commit }, slug) => {
-    commit("START_LOAD_ARTICLE");
-    return Article.get(slug).then(({data}) => {
-        commit("END_LOAD_ARTICLE", data.article)
+export const getArticle = ({ commit }) => {
+    return HomeArticles.all().then((response) => {
+        commit("SET_ARTICLE", response.data.articles);
     })
 }
 
-export const createArticle = ({ commit }, article) => {
-    Article.create(article).then((response) => {
-        commit("SET_ARTICLE", response.data)
-        console.log(response.data);
+export const getArticleFeed = ({ commit }) => {
+    return HomeArticles.getFeed().then((response) => {
+        commit("SET_ARTICLE", response.data.articles);
+    })
+}
+
+export const getTags = ({ commit }) => {
+    return HomeArticles.getTags().then((response) => {
+        commit("SET_TAGS", response.data.tags)
     })
 }
 // export const getArticle = ({ commit }, slug) => {
@@ -64,3 +68,8 @@ export const createArticle = ({ commit }, article) => {
 //     debugger
 //   }
 
+// export const getArticle = ({ commit }) => {
+//     return HomeArticles.get().then((response) => {
+//         commit("SET_ARTICLE", response.data.articles);
+//     })
+// }

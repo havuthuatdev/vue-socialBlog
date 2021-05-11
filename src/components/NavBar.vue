@@ -5,7 +5,7 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active" v-if="username">
             <!-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> -->
-            <router-link class="nav-link" to="/Home">Home</router-link>
+            <router-link class="nav-link" :to="{path: '/'}">Home</router-link>
           </li>
           <li class="nav-item" v-if="username == null">
             <router-link class="nav-link" to="/Register">Register</router-link>
@@ -20,7 +20,7 @@
         <div class="form-inline my-2 my-lg-0">
           <ul class="navbar-nav mr-auto" >
             <li class="nav-item" v-if="username">
-              <router-link class="nav-link" to="/NewArticle">
+              <router-link class="nav-link" to="/editor">
                 NewArticle
               </router-link>
               <!-- <a class="nav-link" href="#">Link</a> -->
@@ -36,7 +36,7 @@
           </ul>
           <ul class="navbar-nav mr-auto" v-if="username">
             <li class="nav-item" >
-              <router-link class="nav-link" to="`/@${username}`">{{
+              <router-link class="nav-link" :to="{ name: 'ProfileArticles', params: {username: username} }">{{
                 username
               }}</router-link>
               <!-- <a class="nav-link" href="#">Link</a> -->

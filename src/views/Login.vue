@@ -69,6 +69,7 @@ export default {
       email: "",
       password: "",
       errors: null,
+      loading: false
     };
   },
   computed: {
@@ -86,7 +87,7 @@ export default {
         })
         .then(() => {
           this.errors = [];
-          this.$router.push("home");
+          this.$router.push({path: '/'});
         })
         .catch((err) => {
           this.errors.push(err);

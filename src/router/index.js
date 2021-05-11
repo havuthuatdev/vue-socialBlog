@@ -1,5 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Home from "@/views/Home.vue"
+import HomeGlobal from "@/views/HomeGlobal.vue"
+import HomeFeed from "@/views/HomeFeed.vue"
+import Profile from "@/views/profile.vue"
+import ProfileArticles from "@/views/ProfileArticles.vue"
+import ProfileFavorited from "@/views/ProfileFavorited.vue"
 // import Register from '../views/Register'
 // import Login from '../views/Login'
 // import Home from '../views/Home'
@@ -11,14 +17,25 @@ export default new Router({
   mode: 'history',
   routes: [
     {
-      path: '/home',
-      name: 'home',
-      component: () => import("@/views/Home.vue")
+      path: '/',
+      component: Home,
+      children: [
+        {
+          path: '/',
+          component: HomeGlobal,
+        },
+        {
+          path: '/feed',
+          component: HomeFeed,
+          meta: { requiresAuth: true },
+        },
+        // { path: 'tag/:tag', component: HomeTag, props: true }
+      ]
     },
     {
       path: '/register',
       name: 'register',
-      component: () => import("@/views/Register.vue")     
+      component: () => import("@/views/Register.vue")
     },
     {
       path: '/login',
@@ -40,16 +57,25 @@ export default new Router({
       name: 'article',
       component: () => import("@/views/Article.vue")
     },
+    // {
+    //   path: '/profile/:username',
+    //   name: 'profile',
+    //   component: () => import("@/views/Profile.vue")
+    // },
     {
       path: '/profile/:username',
-      name: 'profile',
-      component: () => import("@/views/Profile.vue")
+      component: Profile,
+      props: true,
+      children: [
+        { path: '', component: ProfileArticles, name: 'ProfileArticles' },
+        { path: 'favorites', component: ProfileFavorited, name: 'ProfileFavorited' }
+      ]
     },
     {
       path: '/setting',
       name: 'setting',
       component: () => import("@/views/Setting.vue"),
       meta: { requiresAuth: true }
-    }
+    },
   ]
 })
