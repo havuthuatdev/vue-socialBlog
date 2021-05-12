@@ -1,19 +1,19 @@
 <template>
-  <div class="global" :v-if="isAuthenticated">
+  <div class="global">
     <h1>global</h1>
-    <Articles :limit="7"/>
+    <Articles/>
   </div>
 </template>
 
 <script>
-import Article from './Article.vue';
+import Article from "./Article.vue";
 
 export default {
-  components: { Articles: Article},
+  components: { Articles: Article },
 };
 </script>
 <style scoped>
-.global{
-    color: black;
+.global {
+  color: black;
 }
 </style>

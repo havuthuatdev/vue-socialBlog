@@ -97,7 +97,7 @@ export default {
         .dispatch("updateSetting", this.user)
         .then(() => {
           // this.errors = [];
-          this.$router.push({path: "/"});
+          this.$router.push({ path: "/" });
         })
         .catch((err) => {
           // this.errors.push(err);

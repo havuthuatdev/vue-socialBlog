@@ -37,7 +37,6 @@ export const fetchArticle = ({ commit }, slug) => {
 export const createArticle = ({ commit }, article) => {
     Article.create(article).then((response) => {
         commit("SET_ARTICLE", response.data)
-        console.log(response.data);
     })
 }
 // export const getArticle = ({ commit }, slug) => {

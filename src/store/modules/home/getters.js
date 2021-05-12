@@ -1,5 +1,4 @@
 
 export const getTags = (state) =>{
-    return state.tags;
-    
+    return state.article;
 }

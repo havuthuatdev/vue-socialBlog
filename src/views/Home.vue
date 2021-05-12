@@ -18,6 +18,9 @@
             <the-tags />
           </div>
         </div>
+        <div class="row">
+          <ThePaginate />
+        </div>
       </div>
     </div>
   </div>
@@ -67,13 +70,14 @@
 <script>
 import HomeArticleNav from "../components/HomeArticleNav.vue";
 import TheTags from '../components/TheTags.vue';
+import ThePaginate from '../components/ThePaginate.vue';
 import Article from "./Article.vue";
 
 
 // import Article from './Article.vue';
 // import ArticlePreview from "../components/ArticlePreview.vue";
 export default {
-  components: { HomeArticleNavs: HomeArticleNav, Articles: Article, TheTags},
+  components: { HomeArticleNavs: HomeArticleNav, Articles: Article, TheTags, ThePaginate},
   // components: { ArticlePreview },
   name: "Home",
   data() {

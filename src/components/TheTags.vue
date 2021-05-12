@@ -33,11 +33,7 @@ export default {
 </script>
 
 <style scoped> 
-.tag-list{
-  /* margin-left: 5px; */
-}
 .badge{
 margin-left: 5px;
-
 }
 </style>

@@ -27,15 +27,15 @@
 // import Article from '../../../apis/Article'
 import ApiService, { HomeArticles } from '../../../apis'
 
-export const getArticle = ({ commit }) => {
-    return HomeArticles.all().then((response) => {
-        commit("SET_ARTICLE", response.data.articles);
+export const getArticle = ({ commit }, params) => {
+    return HomeArticles.all(params = "?limit=7").then((response) => {
+        commit("SET_ARTICLELIST", response.data.articles);
     })
 }
 
 export const getArticleFeed = ({ commit }) => {
     return HomeArticles.getFeed().then((response) => {
-        commit("SET_ARTICLE", response.data.articles);
+        commit("SET_ARTICLELIST", response.data.articles);
     })
 }
 

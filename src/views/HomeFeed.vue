@@ -7,7 +7,13 @@
 </template>
 
 <script>
-export default {};
+import Article from "./Article.vue";
+export default {
+  components: { Article: Article},
+  mounted(){
+    this.$store.dispatch("getArticleFeed");
+  }
+};
 </script>
 
 <style scoped>

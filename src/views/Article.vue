@@ -1,25 +1,31 @@
 <template>
   <div class="articlePreview">
     <div class="articlePreview-meta">
-      <div class="user" v-for="getArticle in getArticle" :key="getArticle.id">
+      <div class="user" v-for="Article in getArticle" :key="Article.id">
         <div class="user-flex">
-          <a href="profile.html">
-            <img class="user-img" :src="getArticle.author.image" />
-          </a>
+          <router-link
+            :to="{ name: 'Profile', params: { username: Article.author.username }}"
+            class="preview-link">
+            <img class="user-img" :src="Article.author.image" />
+          </router-link>
           <div class="user-flex-group">
-            <h5 class="user-name">{{ getArticle.author.username }}</h5>
-            <span class="date">{{ FormData(getArticle.createdAt) }}</span>
+            <router-link
+              :to="{ name: 'Profile',params: { username: Article.author.username }}"
+              class="preview-link">
+              <h5 class="user-name">{{ Article.author.username }}</h5>
+              <span class="date">{{ FormData(Article.createdAt) }}</span>
+            </router-link>
           </div>
         </div>
         <button
           type="button"
           class="btn btn-outline-primary btn-sm pull-xs-right"
         >
-          <i class="fas fa-heart">{{ getArticle.favoritesCount }}</i>
+          <i class="fas fa-heart">{{ Article.favoritesCount }}</i>
         </button>
         <router-link :to="``" class="preview-link">
-          <h3>{{getArticle.title}}</h3>
-          <p>{{getArticle.description}}</p>
+          <h3>{{ Article.title }}</h3>
+          <p>{{ Article.description }}</p>
           <span>Read more...</span>
           <hr />
         </router-link>
@@ -36,6 +42,7 @@ export default {
   data() {
     return {
       article: null,
+      loading: true,
     };
   },
   mounted() {
@@ -43,7 +50,7 @@ export default {
   },
   computed: {
     getArticle() {
-      return this.$store.state.articles.article;
+      return this.$store.state.home.article;
     },
   },
   methods: {
@@ -76,7 +83,7 @@ export default {
 .user-flex-group {
   display: grid;
 }
-h5{
+h5 {
   color: black;
 }
 </style>

@@ -1,60 +1,59 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from "@/views/Home.vue"
-import HomeGlobal from "@/views/HomeGlobal.vue"
-import HomeFeed from "@/views/HomeFeed.vue"
-import Profile from "@/views/profile.vue"
-import ProfileArticles from "@/views/ProfileArticles.vue"
-import ProfileFavorited from "@/views/ProfileFavorited.vue"
+import Vue from "vue";
+import Router from "vue-router";
+import Home from "@/views/Home.vue";
+import HomeGlobal from "@/views/HomeGlobal.vue";
+import HomeFeed from "@/views/HomeFeed.vue";
+import Profile from "@/views/profile.vue";
+import ProfileArticle from "@/views/ProfileArticle.vue";
+import ProfileFavorited from "@/views/ProfileFavorited.vue";
 // import Register from '../views/Register'
 // import Login from '../views/Login'
 // import Home from '../views/Home'
 
-
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
-  mode: 'history',
+  mode: "history",
   routes: [
     {
-      path: '/',
+      path: "/",
       component: Home,
       children: [
         {
-          path: '/',
-          component: HomeGlobal,
+          path: "/",
+          component: HomeGlobal
         },
         {
-          path: '/feed',
+          path: "/feed",
           component: HomeFeed,
-          meta: { requiresAuth: true },
-        },
+          meta: { requiresAuth: true }
+        }
         // { path: 'tag/:tag', component: HomeTag, props: true }
       ]
     },
     {
-      path: '/register',
-      name: 'register',
+      path: "/register",
+      name: "register",
       component: () => import("@/views/Register.vue")
     },
     {
-      path: '/login',
-      name: 'login',
+      path: "/login",
+      name: "login",
       component: () => import("@/views/Login.vue")
     },
     {
-      path: '/editor',
-      name: 'editor_new',
+      path: "/editor",
+      name: "editor_new",
       component: () => import("@/views/ArticleCreate.vue")
     },
     {
-      path: '/editor/:article-slug',
-      name: 'editor_edit',
+      path: "/editor/:article-slug",
+      name: "editor_edit",
       component: () => import("@/views/ArticleEdit.vue")
     },
     {
-      path: '/article/:article-slug',
-      name: 'article',
+      path: "/article/:article-slug",
+      name: "article",
       component: () => import("@/views/Article.vue")
     },
     // {
@@ -63,19 +62,27 @@ export default new Router({
     //   component: () => import("@/views/Profile.vue")
     // },
     {
-      path: '/profile/:username',
+      path: "/profile/:username",
       component: Profile,
-      props: true,
+      name: "Profile",
       children: [
-        { path: '', component: ProfileArticles, name: 'ProfileArticles' },
-        { path: 'favorites', component: ProfileFavorited, name: 'ProfileFavorited' }
+        {
+          path: "",
+          component: ProfileArticle,
+          name: "ProfileArticle"
+        },
+        {
+          path: "favorites",
+          component: ProfileFavorited,
+          name: "ProfileFavorited",
+        }
       ]
     },
     {
-      path: '/setting',
-      name: 'setting',
+      path: "/setting",
+      name: "setting",
       component: () => import("@/views/Setting.vue"),
       meta: { requiresAuth: true }
-    },
+    }
   ]
-})
+});

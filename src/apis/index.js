@@ -87,11 +87,11 @@ export const Profile = {
   }
 }
 export const HomeArticles = {
-  all(slug) {
-    return ApiService.get("articles", slug)
+  all(params) {
+    return ApiService.query(`articles${params}`);
   },
-  getFeed(slug) {
-    return ApiService.get("articles/feed", slug)
+  getFeed() {
+    return ApiService.get(`articles/feed`)
   },
   getTags(slug) {
     return ApiService.get("tags", slug)

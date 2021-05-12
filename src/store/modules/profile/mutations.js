@@ -1,5 +1,7 @@
+import { sync } from "rimraf";
 
 export const SET_PROFILE = (state, payload) => {
-    state.profile = payload;
-    console.log(state.profile);
+    const { user, isLoading } = payload
+    state.user = user;
+    state.isLoading = isLoading
 }

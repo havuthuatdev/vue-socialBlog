@@ -12,6 +12,11 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import store from './store'
 import ApiService from './apis'
+
+// paginate 
+import Paginate from 'vuejs-paginate'
+Vue.component('paginate', Paginate)
+
 // import {CHECK_AUTH} from './store/modules/users'
 // Ensure we checked auth before each page load.
 // store.dispatch(CHECK_AUTH);

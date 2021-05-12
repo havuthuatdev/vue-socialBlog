@@ -19,7 +19,6 @@ import Home from "./views/Home.vue";
 export default {
   components: { Login, Register, NavBar, Home },
   name: "App",
-
 };
 </script>
 
@@ -29,7 +28,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* text-align: center; */
-  color: white;
+  color: black;
   margin-top: 60px;
 }
 </style>
