@@ -15,7 +15,7 @@ export const loginUser = ({ commit }, { email, password }) => {
         user: {
             email,
             password
-        },    
+        }, 
     }).then((response) => {
         if (response.data.user) {
             setToken(response.data.user.token);
@@ -55,7 +55,6 @@ export const updateSetting = ({commit, state}, user) => {
     }
     return Auth.updateProfile({ email, username, password, bio, image }).then(({data}) => {
         commit("SET_USER", data.user)
-        console.log(data.user);
     }).catch((err) => {
         console.error(err);
         // throw err;

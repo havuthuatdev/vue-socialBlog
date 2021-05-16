@@ -88,8 +88,8 @@ export const Profile = {
 }
 export const HomeArticles = {
   all(params) {
-    return ApiService.query(`articles${params}`);
-  },
+    return ApiService.get("articles",params); 
+  },  
   getFeed() {
     return ApiService.get(`articles/feed`)
   },
@@ -106,7 +106,7 @@ export const Article = {
   createArcicle(article) {
     return ApiService.post("articles", { article })
   },
-  updateArcicle(slug, article) {
+  updateArcicle(slug, article) {  
     return ApiService.put(`articles/${slug}`, { article })
   },
   deleteArcicle(slug) {

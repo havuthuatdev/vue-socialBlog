@@ -1,15 +1,15 @@
 <template>
   <div class="global">
     <h1>global</h1>
-    <Articles/>
+    <ArticleList/>
   </div>
 </template>
 
 <script>
-import Article from "./Article.vue";
+import ArticleList from "./ArticleList.vue";
 
 export default {
-  components: { Articles: Article },
+  components: { ArticleList: ArticleList },
 };
 </script>
 <style scoped>

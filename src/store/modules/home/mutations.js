@@ -1,6 +1,6 @@
 
-export const SET_ARTICLELIST = (state, article) => {
-    state.article = article;
+export const SET_ARTICLELIST = (state, payload) => {
+    state.article = payload
 }
 
 export const SET_TAGS = (state, tags) => {

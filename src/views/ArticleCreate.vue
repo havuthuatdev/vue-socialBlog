@@ -42,7 +42,7 @@
         <button
           type="button"
           class="btn btn-primary"
-          @click.prevent="creatArticle"
+          @click.prevent="onCreatArticle"
         >
           Create Article
         </button>
@@ -53,20 +53,29 @@
 
 <script>
 export default {
-  name: "Article Create",
+  name: "ArticleCreate",
   data() {
     return {
       title: "",
       description: "",
       body: "",
       tagList: [],
-      loading: false
+      loading: false,
     };
   },
-  created(){
-    this.$store.dispatch("createArticle");
-  }
-
+  methods: {
+    onCreatArticle() {
+      this.$store.dispatch("createArticle", {
+        title: this.title,
+        description: this.description,
+        body: this.body,
+      }).then(() =>{
+        this.$router.push("/")
+      }).catch((err)=>{
+        console.log(err);
+      });
+    },
+  },
 };
 </script>
 

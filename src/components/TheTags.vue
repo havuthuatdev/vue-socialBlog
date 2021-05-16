@@ -21,7 +21,7 @@ export default {
   },
   computed: {
     getInforTag() {
-      return this.$store.state.home["tags"];
+      return this.$store.state.home["tags"];  
     },
   },
   methods:{

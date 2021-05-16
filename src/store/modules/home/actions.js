@@ -28,8 +28,13 @@
 import ApiService, { HomeArticles } from '../../../apis'
 
 export const getArticle = ({ commit }, params) => {
-    return HomeArticles.all(params = "?limit=7").then((response) => {
+    debugger;
+    // const { data } = HomeArticles.all(params)
+    // const { articles, articlesCount } = data
+    // commit("SET_ARTICLELIST", { articles, articlesCount })
+    return HomeArticles.all(params).then((response) => {
         commit("SET_ARTICLELIST", response.data.articles);
+        console.log(response.data.articles);
     })
 }
 

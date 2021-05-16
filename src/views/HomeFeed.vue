@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import Article from "./Article.vue";
+import ArticleList from "./ArticleList.vue";
 export default {
-  components: { Article: Article},
+  components: { ArticleList: ArticleList},
   mounted(){
     this.$store.dispatch("getArticleFeed");
   }
