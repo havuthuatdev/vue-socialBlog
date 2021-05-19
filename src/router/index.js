@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "@/views/Home.vue";
+import TheAppContent from "@/views/TheAppContent.vue";
 import HomeGlobal from "@/views/HomeGlobal.vue";
 import HomeFeed from "@/views/HomeFeed.vue";
 import TheProfile from "@/views/TheProfile.vue";
@@ -15,8 +15,8 @@ export default new Router({
     routes: [
         {
             path: "/",
-            component: Home,
-            name: "home",
+            component: TheAppContent,
+            name: "TheAppContent",
             children: [
                 {
                     path: "/",
@@ -65,14 +65,15 @@ export default new Router({
             name: "ProfileUser",
             children: [
                 {
-                    path: "/",
+                    path: "",
                     component: ArticlePersonal,
                     name: "ArticlePersonal"
                 },
                 {
-                    path: "/favorites",
+                    path: "/favorited/:username",
                     component: ProfileFavorited,
-                    meta: { requiresAuth: true }
+                    name: "ProfileFavorited",
+                    // meta: { requiresAuth: true }
                 }
             ]
         },

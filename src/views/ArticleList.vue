@@ -1,54 +1,42 @@
 <template>
-  <div class="articlePreview">
-    <div class="articlePreview-meta">
-      <article-preview
-        v-for="Article in getArticle"
-        :key="Article.id"
-        :Article="Article"
-      />
+    <div class="articlePreview">
+        <div class="articlePreview-meta">
+            <article-preview
+                v-for="Article in getArticle"
+                :key="Article.id"
+                :Article="Article"
+            />
+        </div>
     </div>
-  </div>
 </template>
 <script>
-import ArticlePreview from "./ArticlePreview.vue";
-export default {
-  components: { ArticlePreview },
-  name: "ArticleList",
-props: ['query'],
-  // data() {
-  //   return {
-  //     article: null,
-  //     loading: true,
-  //   };
-  // },
-    // created() {
-    // },
-  mounted() {
-    // this.$store.dispatch("getArticle");  
-    this.fetchNewArticle(); 
 
-  },
-  computed: {
-    getArticle() {
-      return this.$store.state.home.article;
+import ArticlePreview from "./ArticlePreview.vue";
+
+export default {
+    components: { ArticlePreview },
+    name: "ArticleList",
+    props: ["articlePersonal", "favoritedPersonal"],
+    mounted() {
+        // this.fetchNewArticle();
+        this.$root.$refs.ArticleList = this;
+        // this.fetFavoritedArticle();
     },
-    // queryString() {
-    //   return Object.assign({}, this.query);
-    // },
-  },
-  methods: {
-    // ...mapActions({
-    //   fetchArticle: FETCH_ARTICLES,
-    //   fetchFeedArticle: FETCH_FEED_ARTICLES,
-    // }),
-    fetchNewArticle() {
-      debugger;
-      // let query = this.query;
-      this.$store.dispatch("getArticle",this.query);
-      debugger;
+    computed: {
+        getArticle() {
+            return this.$store.state.home.article;
+        },
     },
-    // await this.fetchFeedArticle(this.queryString);
-  },
+    methods: {
+        fetchNewArticle() {
+            debugger
+            this.$store.dispatch("getArticle", this.articlePersonal);
+        },
+        fetFavoritedArticle(){
+            debugger;
+            this.$store.dispatch("getArticle", this.favoritedPersonal);
+        }
+    },
 };
 </script>
 

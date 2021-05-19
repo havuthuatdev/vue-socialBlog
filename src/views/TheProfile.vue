@@ -40,7 +40,7 @@
                 <router-link
                   class="nav-link"
                   exact-active-class="active"
-                  :to="{ path: '/favorites' }"
+                  :to="{ name: 'ProfileFavorited' }"
                   >Favorited
                 </router-link>
               </li>

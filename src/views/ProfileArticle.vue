@@ -24,13 +24,10 @@
           >
             delete Article
           </button>
-          <button
-            v-if="userNameAccount == getArticle.author.username"
-            @click="onEditArticle"
-          >
+          <button v-else>Follow</button>
+          <button v-if="userNameAccount == getArticle.author.username">
             Edit Article
           </button>
-          <button v-else>Follow</button>
         </div>
       </template>
     </div>
@@ -53,15 +50,15 @@ export default {
   },
   methods: {
     onDeleteArticle() {
-        this.$store
-            .dispatch("deleteArticle", this.$route.params.slug)
-            .then(() => {
-            this.$router.push("/");
-            });
+      this.$store
+        .dispatch("deleteArticle", this.$route.params.slug)
+        .then(() => {
+          this.$router.push("/");
+        });
     },
     onEditArticle() {
-        this.$router.push('/editor')
-        // this.$store.dispatch("updateArcicle");
+      // this.$router.push('/editor')
+      this.$store.dispatch("updateArticle", this.$route.params.slug);
     },
   },
 };

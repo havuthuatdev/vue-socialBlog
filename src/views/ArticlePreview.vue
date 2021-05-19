@@ -6,7 +6,6 @@
           name: 'ProfileUser',
           params: { username: Article.author.username },
         }"
-        class="preview-link"
       >
         <img class="user-img" :src="Article.author.image" />
       </router-link>
@@ -25,6 +24,7 @@
     </div>
     <button
       @click="onFavorited"
+      :class="isFavoritedClass"
       type="button"
       class="btn btn-outline-primary btn-sm pull-xs-right"
     >
@@ -55,12 +55,39 @@ export default {
       default: () => {},
     },
   },
+  // đổi màu icon yêu thícha
+  computed: {
+    isFavoritedClass() {
+      return this.Article.favorited ? "active" : "";
+    },
+  },
+  // mounted() {
+
+  // },
   methods: {
     FormData(dateString) {
       return moment(dateString).format("MMMM Do, YYYY");
     },
     onFavorited() {
-      alert("skndfks");
+      debugger;
+      if (!this.$store.state.users.isAuthenticated) {
+        this.$router.push("/login");
+      }
+      if (!this.Article.favorited) {
+        debugger;
+        this.$store
+          .dispatch("favoritesArticle", this.Article.slug)
+          .then((Response) => {
+            // this.Article.favoritesCount++;
+          });
+      } else {
+        this.$store
+          .dispatch("unfavoritesArticle", this.Article.slug)
+          .then((Response) => {
+            debugger;
+            // this.Article.favoritesCount--;
+          });
+      }
     },
   },
 };

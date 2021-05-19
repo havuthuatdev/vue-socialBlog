@@ -1,19 +1,27 @@
 <template>
   <div>
     <h3>Article personal</h3>
-    <article-list :query="'?author='+username" :limit="5"/>
+    <article-list :articlePersonal="'?author=' + username"/>
   </div>
 </template>
 <script>
-import ArticleList from './ArticleList.vue';
+import ArticleList from "./ArticleList.vue";
 export default {
   components: { ArticleList },
   name: "ArticlePersonal",
+  mounted(){
+    this.callfetchNewArticle();
+  },
   computed: {
     username() {
-      return this.$route.params.username; 
+      return this.$route.params.username;
     },
   },
+  methods:{
+    callfetchNewArticle(){
+      this.$root.$refs.ArticleList.fetchNewArticle();
+    }
+  }
   //   mounted(){
   //       this.$store.dispatch("fetchArticle")
   //   },

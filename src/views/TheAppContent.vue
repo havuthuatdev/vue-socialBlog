@@ -9,7 +9,7 @@
           <div class="row">
             <div class="col-md-9">
               <div class="feed-toggle">
-                <HomeArticleNavs />
+                <TheNavHome />
               </div>
               <!-- ĐIều khiển nav -->
               <router-view></router-view>
@@ -28,13 +28,13 @@
 </template>
 
 <script>
-import HomeArticleNav from "../components/TheNavHome.vue";
+import TheNavHome from "../components/TheNavHome";
 import TheTags from "../components/TheTags.vue";
 import ThePaginate from "../components/ThePaginate.vue";
 
 export default {
-  components: { HomeArticleNavs: HomeArticleNav, TheTags, ThePaginate },
-  name: "Home",
+  components: {TheNavHome,  TheTags, ThePaginate },
+  name: "TheAppContent",
   computed: {
     isAuth() {
       return this.$store.getters[("user", "isAuthenticated")];

@@ -12,13 +12,13 @@ const ApiService = {
     Vue.use(VueAxios, axios)
     Vue.axios.defaults.baseURL = api
   },
-  query(resource, params) {
-    return Vue.axios
-      .get(resource, { params })
-      .catch((error) => {
-        throw new Error(`[RWV] ApiService ${error}`)
-      })
-  },
+  // query(resource, params) {
+  //   return Vue.axios
+  //     .get(resource, { params })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     })
+  // },
   setHeader() {
     const token = getToken()
     if (token) {

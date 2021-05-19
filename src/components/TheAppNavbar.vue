@@ -55,12 +55,13 @@
 
 <script>
 export default {
-  name: "Navbar",
+  name: "TheAppNavbar",
   computed: {
     username() {
       return this.$store.getters[("user", ["username"])];
     },
     isAuth() {
+      debugger
       // return this.$store.getters[("user", ["isAuthenticated"])];
       return this.$store.state.users.isAuthenticated;
     }

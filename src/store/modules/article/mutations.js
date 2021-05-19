@@ -1,6 +1,6 @@
 
 export const SET_ARTICLE = (state, article) => {
-    state.article = article;    
     debugger;
+    state.article = article;    
     console.log(state.article);
 }

@@ -122,7 +122,7 @@ export default {
 </script>
 
 <style scoped>
-.container{
+.container {
   color: white;
 }
 form {
